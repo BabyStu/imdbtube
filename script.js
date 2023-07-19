@@ -1,12 +1,15 @@
+const imdbApi = '871cc0dc';
+const youtubeApi = 'AIzaSyAHvcBl8WthZkECx9RMvPLuU6tU3c7I0XM';
 
-var searchInputEl = document.querySelector('#searchbar');
-
+var searchBarInput = document.querySelector('#searchBar');
 var imdbTitleBox = document.querySelector('#titlebox');
 
-function imdbSearch(callback) {
-    var locQueryUrl = 'http://www.omdbapi.com/?apikey='
+function imdbSearch(searchInput) {
+    var locQueryUrl = 'http://www.omdbapi.com/?';
 
-    locQueryUrl = locQueryUrl + apiKey + '&t=' + searchInputEl;
+    console.log(searchInput)
+
+    locQueryUrl = locQueryUrl + 'apikey=' + imdbApi + '&t=' + searchInput;
 
     fetch(locQueryUrl)
         .then(function (response) {
@@ -15,34 +18,65 @@ function imdbSearch(callback) {
         .then(function (imdbData) {
 
             console.log(imdbData);
-            if (imdbData.length > 0) {
-                var movie = imdbData[0];
-                var title = movie.Title;
-                var metascore = movie.Metascore;
-                var imdbRating = movie.imdbRating;
 
-                imdbTitleBox.textContent = title;
 
-                console.log(title);
-                console.log(metascore);
-                console.log(imdbRating);
-            } else {
-                console.log('No results found');
-            }
+            var title = imdbData.Title;
+            var metascore = imdbData.Metascore;
+            var imdbRating = imdbData.imdbRating;
+
+            console.log(title);
+            console.log(metascore);
+            console.log(imdbRating);
+
+            youtubeSearch(title);
         })
 }
 
-function wikiSearch() {
-    var locQueryUrl = 'https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=&srlimit=1&srsearch='
+function youtubeSearch (movieTitle) {
+    var trailer = movieTitle + ' trailer';
+    var youtubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=';
+    youtubeUrl = youtubeUrl + trailer + '&maxResults=1&key=' + youtubeApi;
 
-    locQueryUrl = locQueryUrl + imdbTitleBox.textContent;
+    fetch(youtubeUrl)
+        .then(function (response) {
+            console.log(response)
+            return response.json();
 
+        })
+        .then(function (video) {
+            console.log(video)
 
+            var videoId = video.items[0].id.videoId;
+            var iframe = document.createElement("iframe");
+            iframe.src = "https://www.youtube.com/embed/" + videoId;
+            iframe.width = "640";
+            iframe.height = "360";
 
+            var container = document.getElementById("videoContainer");
+            container.innerHTML = "";
+            container.appendChild(iframe);
+
+        })
 }
 
 
 
+function searchSubmit(event) {
+    event.preventDefault();
 
 
-apiKey = 871cc0dc
+    var searchInputVal = document.querySelector('#search-input').value;
+
+    if (!searchInputVal) {
+        console.error('Input movie title!');
+        return;
+    }
+    console.log(searchInputVal)
+    imdbSearch(searchInputVal);
+}
+
+searchBarInput.addEventListener('submit', searchSubmit);
+
+
+
+ 
