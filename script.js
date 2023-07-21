@@ -45,4 +45,4 @@ function wikiSearch() {
 
 
 
-apiKey = 871cc0dc
+// apiKey = 871cc0dc
