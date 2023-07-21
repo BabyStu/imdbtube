@@ -3,42 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="
+https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css
+"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>RottenWiki</title>
-<<<<<<< HEAD
-</head>
-<body>
-   <header>
-    <h1>RottenWiki</h1>
-    <!-- search bar div below -->
-    <div>
-        
-    </div>
-   </header> 
-   <main>
-    <div>
-        <!-- image box below -->
-=======
   </head>
   <body>
-    <header>
-      <h1 class="header" id="">RottenWiki</h1>
+    <header class="header">
+      <h1 class="title" id="">RottenWiki</h1>
       <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
         <div class="topnav">
           <!-- <a class="active" href="#home">Home</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a> -->
-          <input class="searchbar" id="searchbar" type="text" placeholder="Search.." />
+          <input
+            class="searchbar"
+            id="searchbar"
+            type="text"
+            placeholder="Search.."
+          />
         </div>
+        <nav class="level is-mobile">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Tweets</p>
+              <p class="title"></p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Following</p>
+              <p class="title"></p>
+            </div>
+          </div>
+        </nav>
       </nav>
     </header>
     <main>
-      <div>
-        <img src="" alt="Italian Trulli" />
->>>>>>> 7eb7f68c164f542f5625db41d3b34d0bd79a1b52
+      <section class="section">
+        <h1 class="title">Section</h1>
+        <h2 class="subtitle">test</h2>
+      </section>
+      <div class="content">
+        <button class="js-modal-trigger" data-target="modal-js-example">
+          Open JS example modal
+        </button>
+        <!-- <img src="" alt="Italian Trulli" />
         <div></div>
         <iframe
-          src="https://languages.oup.com/google-dictionary-en/"
+          src=""
           width="400px"
           height="200px"
           style="border: none"
@@ -67,7 +84,7 @@
         ></iframe>
         <div></div>
         <iframe
-          src=test
+          src="test"
           style="border: none"
           title="Iframe Example"
           class="iframe1"
@@ -91,9 +108,59 @@
           title="Iframe Example"
           class="iframe1"
           id="wiki3"
-        ></iframe>
+        ></iframe> -->
       </div>
     </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Functions to open and close a modal
+        function openModal($el) {
+          $el.classList.add("is-active");
+        }
+
+        function closeModal($el) {
+          $el.classList.remove("is-active");
+        }
+
+        function closeAllModals() {
+          (document.querySelectorAll(".modal") || []).forEach(($modal) => {
+            closeModal($modal);
+          });
+        }
+
+        // Add a click event on buttons to open a specific modal
+        (document.querySelectorAll(".js-modal-trigger") || []).forEach(
+          ($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
+
+            $trigger.addEventListener("click", () => {
+              openModal($target);
+            });
+          }
+        );
+
+        // Add a click event on various child elements to close the parent modal
+        (
+          document.querySelectorAll(
+            ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button"
+          ) || []
+        ).forEach(($close) => {
+          const $target = $close.closest(".modal");
+
+          $close.addEventListener("click", () => {
+            closeModal($target);
+          });
+        });
+
+        // Add a keyboard event to close all modals
+        document.addEventListener("keydown", (event) => {
+          if (event.code === "Escape") {
+            closeAllModals();
+          }
+        });
+      });
+    </script>
     <script src="./script.js"></script>
   </body>
 </html>
