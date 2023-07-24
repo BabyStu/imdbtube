@@ -17,6 +17,7 @@ function imdbSearch(searchInput) {
             return response.json();
         })
         .then(function (imdbData) {
+            
 
             console.log(imdbData)
 
