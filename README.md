@@ -11,3 +11,5 @@ The magic of IMDbTube lies in its vibrant community of movie enthusiasts. Engage
 But that's not all! IMDbTube empowers aspiring filmmakers to showcase their talent through our dedicated space for indie films and short creations. Get discovered by a passionate audience eager to support fresh, creative voices in the film industry.
 
 Whether you're a casual movie-goer, a seasoned cinephile, or an aspiring filmmaker, IMDbTube offers an all-in-one platform that caters to your every need. Join our rapidly growing community and embark on a cinematic journey like never before. Embrace the power of IMDbTube today and witness the magic of movies unfold!
+
+![The home page shows a search bar.](./rottenwiki.png)

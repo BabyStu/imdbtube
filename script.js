@@ -17,19 +17,23 @@ function imdbSearch(searchInput) {
             return response.json();
         })
         .then(function (imdbData) {
-            
 
             console.log(imdbData)
+            if (!imdbData.Title) {
+                console.log('No results found!');
+                imdbInfoBox.innerHTML = '<h3>No results found, try again!</h3>';
+            } else {
 
-            var title = imdbData.Title;
-            var array = [title, imdbData.Plot, imdbData.Director, imdbData.Actors, imdbData.Year, imdbData.BoxOffice, imdbData.Ratings[1]];
+                var title = imdbData.Title;
+                var array = [title, imdbData.Plot, imdbData.Director, imdbData.Actors, imdbData.Year, imdbData.BoxOffice, imdbData.Ratings[1]];
 
-            youtubeSearch(title);
-            printImdb(array);
+                youtubeSearch(title);
+                printImdb(array);
+            }
         })
 }
 
-function youtubeSearch (movieTitle) {
+function youtubeSearch(movieTitle) {
     var trailer = movieTitle + ' trailer';
     var youtubeUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=';
     youtubeUrl = youtubeUrl + trailer + '&maxResults=1&key=' + youtubeApi;
@@ -87,6 +91,7 @@ function searchSubmit(event) {
 
     if (!searchInputVal) {
         console.error('Input movie title!');
+        imdbInfoBox.innerHTML = 'Input movie title!!';
         return;
     }
     console.log(searchInputVal)
