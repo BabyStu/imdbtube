@@ -95,10 +95,3 @@ function searchSubmit(event) {
 
 searchBarInput.addEventListener('submit', searchSubmit);
 
-
-
-// <<<<<<< javascript
- 
-// =======
-// // apiKey = 871cc0dc
-// >>>>>>> main
