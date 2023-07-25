@@ -5,7 +5,7 @@ var imdbTitleBox = document.querySelector('#titlebox');
 var imdbInfoBox = document.querySelector('#imdbInfo');
 
 function imdbSearch(searchInput) {
-    var locQueryUrl = 'http://www.omdbapi.com/?';
+    var locQueryUrl = 'https://www.omdbapi.com/?';
     console.log(searchInput)
     locQueryUrl = locQueryUrl + 'apikey=' + imdbApi + '&t=' + searchInput;
 
