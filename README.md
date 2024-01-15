@@ -1,5 +1,7 @@
 # imdbtube
 
+![Portfolio Screen Shot](./rottenWiki.png)
+
 Introducing IMDbTube: Where Movie Enthusiasts Unite!
 
 IMDbTube is a revolutionary open-source repository that merges the best of two worlds: the immersive experience of movies and the power of community-driven content. Our platform seamlessly integrates the vast movie database of IMDb with the interactive and engaging elements of a social media platform, delivering an unparalleled movie-watching experience.
